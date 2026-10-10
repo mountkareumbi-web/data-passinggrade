@@ -82,10 +82,8 @@
 </div>
 
 <script>
-  // MASUKKAN URL APPS SCRIPT YANG SAMA DENGAN EMAIL A
   const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyreCihaaImDXUSIc2axAfu1x_NP-U225QFM7GgnGyby9BJWOzl5q1d3ycs1MQWR3Zp/exec";
 
-  // Fungsi penentuan passing grade & predikat (Berdasarkan skor PG maks 240)
   function getPassingGradeInfo(score) {
     if (score >= 200) {
       return { teks: "Sangat Baik", class: "sangat-baik" };
@@ -98,7 +96,6 @@
     }
   }
 
-  // Ambil data nilai secara real-time setiap 1 detik
   function fetchDataRealtime() {
     fetch(GOOGLE_SCRIPT_URL + "?action=read")
       .then(res => res.json())
@@ -138,7 +135,6 @@
     });
   }
 
-  // Reset Data Ujian
   function resetData() {
     if (confirm("Apakah Anda yakin ingin menghapus seluruh data nilai passing grade?")) {
       fetch(GOOGLE_SCRIPT_URL + "?action=reset", { method: "POST", mode: "no-cors" })
@@ -150,7 +146,6 @@
     }
   }
 
-  // Jalankan polling setiap 1000 milidetik (1 detik)
   setInterval(fetchDataRealtime, 1000);
   fetchDataRealtime();
 </script>
